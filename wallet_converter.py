@@ -8,9 +8,11 @@ net_ids = [
 
 #### WALLET ADDRESSES ####
 wallet_addresses = [
-    "Rj7J7MiX2bWy8sNyXy4ynu9Z2SLEiExmG7XFxkWArqbJ2asf23RFfrQNC16VC5AfNAE8oGyVxAXPUJNLRx9H1y1TvWnzGmNZCGBLXCya",
-    "Rj7J7MiX2bWy8sNyXy4ynu9Z2SLEiExmG7XFxkWArqbJ2asf23RFfrQNC16VC5AfNAE8oGyVxAXPUJNLRx9H1y1TvWnzGmNZCGBLXCa"
-]
+    "LIST",
+    "OF",
+    "WALLET",
+    "ADDRESSES"
+    ]
 
 def parse_cf_address(address):
     bdata = base58.b58decode(address)
