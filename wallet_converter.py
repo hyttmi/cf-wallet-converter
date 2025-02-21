@@ -3,7 +3,8 @@ import hashlib
 
 #### NETWORK ID'S ####
 net_ids = [
-    ("KelVPN", 0x1807202300000000)  # Add more, if you want...
+    ("KelVPN", 0x1807202300000000),
+    ("Backbone", 0x0404202200000000) # Add more, if you want...
 ]
 
 #### WALLET ADDRESSES ####
@@ -50,11 +51,17 @@ def build_cf_address(version, net_id, sign_id, public_hash):
     return base58.b58encode(full_address).decode()
 
 def convert_address(address):
-    version, net_id, sign_id, public_hash, _, _ = parse_cf_address(address)
+    version, current_net_id, sign_id, public_hash, _, _ = parse_cf_address(address)
 
     for name, new_net_id in net_ids:
+        if current_net_id == new_net_id:
+            print(f"Address is already using {name} network ID.")
+            return
         converted_address = build_cf_address(version, new_net_id, sign_id, public_hash)
         print(f"Converted address for {name}: {converted_address}")
 
 for address in wallet_addresses:
-    convert_address(address)
+    try:
+        convert_address(address)
+    except ValueError:
+        print(f"Skipping invalid address: {address}")
